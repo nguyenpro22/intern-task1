@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ClockCircleOutlined, HomeOutlined, MailOutlined, MedicineBoxOutlined, TeamOutlined, UserOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Avatar, Layout, Menu, Typography } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import { Content as AntdContent, Header } from 'antd/es/layout/layout'; // Rename the Content import
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ContentRoutes from './routes';
 function getItem(label, key, icon, children, type) {
     return {
@@ -48,7 +48,10 @@ const items = [
     ]),
 ];
 
-const Dashboard = ({ headerContent }) => {
+const Dashboard = () => {
+    const location = useLocation();
+    const path = location.pathname.replace('/', '');
+
     const navigate = useNavigate();
     return (
         <div style={{ display: 'flex' }}>
@@ -75,7 +78,8 @@ const Dashboard = ({ headerContent }) => {
                             navigate(`/${key}`);
                         }}
                         theme="light"
-                        defaultSelectedKeys={['sub1']}
+                        defaultSelectedKeys={[path]}
+                        defaultOpenKeys={['sub2', 'sub3', 'sub4', 'sub5', 'sub6', 'sub7', 'sub8']}
                         mode="inline"
                         items={items}
                         style={{ textAlign: 'start' }}
