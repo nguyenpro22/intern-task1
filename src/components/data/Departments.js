@@ -2,17 +2,17 @@ const departmentsData = [
     {
         key: "1",
         id: "1",
-        name: "Sales",
+        department: { name: "Sales", color: '#FF5733' },
         nameManagement: "Nguyen Van Quan Ly",
         avatar: 'https://xsgames.co/randomusers/avatar.php?g=male',
         employees: 0,
-        email: "alice@company.com",
-        phone: "123-456-7890",
+        email: "String@gmail.com",
+        phone: "String",
     },
     {
         key: "2",
         id: "2",
-        name: "Marketing",
+        department: { name: "Marketing", color: '#33FF57' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -21,7 +21,7 @@ const departmentsData = [
     {
         key: "3",
         id: "3",
-        name: "Finance",
+        department: { name: "Finance", color: '#5733FF' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -30,7 +30,7 @@ const departmentsData = [
     {
         key: "4",
         id: "4",
-        name: "Human Resource",
+        department: { name: "Human Resource", color: '#FF3357' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -39,7 +39,7 @@ const departmentsData = [
     {
         key: "5",
         id: "5",
-        name: "Operations",
+        department: { name: "Operations", color: '#57FF33' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -48,7 +48,7 @@ const departmentsData = [
     {
         key: "6",
         id: "6",
-        name: "Engineering",
+        department: { name: "Engineering", color: '#3357FF' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -57,7 +57,7 @@ const departmentsData = [
     {
         key: "7",
         id: "7",
-        name: "Customer Support",
+        department: { name: "Customer Support", color: '#FFA533' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -66,7 +66,7 @@ const departmentsData = [
     {
         key: "8",
         id: "8",
-        name: "Research & Development",
+        department: { name: "Research & Development", color: '#33A5FF' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -75,7 +75,7 @@ const departmentsData = [
     {
         key: "9",
         id: "9",
-        name: "Quality Assurance",
+        department: { name: "Quality Assurance", color: '#A533FF' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -84,7 +84,7 @@ const departmentsData = [
     {
         key: "10",
         id: "10",
-        name: "Design",
+        department: { name: "Design", color: '#33FFA5' },
         nameManagement: "",
         employees: 0,
         email: "",
@@ -93,11 +93,12 @@ const departmentsData = [
     {
         key: "11",
         id: "11",
-        name: "Chăm sóc khách hàng",
+        department: { name: "Chăm sóc khách hàng", color: '#A5FF33' },
         nameManagement: "",
         employees: 0,
         email: "",
         phone: "",
+
     },
 ];
 

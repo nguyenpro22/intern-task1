@@ -5,7 +5,7 @@ import Employees from "./employees/Employees";
 const ContentRoutes = () => {
     return (
         <Routes>
-            <Route path="/dashboard" element={<div>home</div>} />
+            <Route path="/" element={<div>home</div>} />
             <Route path="/deps" element={<Departments />} />
             <Route path="/mydep" element={<div>This is mydep page</div>} />
             <Route path="/emps" element={<Employees />} />

@@ -39,7 +39,7 @@ const columns = [
     {
         title: () => {
             return (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
                     <MdOutlineAccountCircle
                         style={{
                             fontSize: '24px',
@@ -47,16 +47,16 @@ const columns = [
                             margin: '5px'
                         }}
                     />
-                    <span >Các Phòng Ban</span>
+                    <span >Tên Phòng Ban</span>
                 </div>
             );
         },
-        dataIndex: 'name',
-        render: (text, record) => (
+        dataIndex: 'department',
+        render: (record) => (
             <Space >
-                <Badge color={getRandomColor()} />
-                <Typography.Text underline strong>
-                    {text}
+                <Badge color={record.color} />
+                <Typography.Text underline >
+                    {record.name}
                 </Typography.Text>
             </Space>
         ),
@@ -65,7 +65,7 @@ const columns = [
         title: () => {
             return (
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
                         <MdOutlineAccountCircle
                             style={{
                                 fontSize: '24px',
@@ -102,7 +102,7 @@ const columns = [
     {
         title: () => {
             return (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
                     <ContainerOutlined style={{
                         fontSize: '24px',
                         fontWeight: 'bold',
@@ -135,7 +135,7 @@ const columns = [
 function updateEmployeeCount(departmentsData, employeesData) {
     departmentsData.forEach((department) => {
         department.employees = employeesData.filter(
-            (employee) => employee.department === department.name
+            (employee) => employee.department.name === department.department.name
         ).length;
     });
 }

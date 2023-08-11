@@ -10,6 +10,7 @@ import {
     Select,
     Input,
 } from "antd";
+
 import {
     EllipsisOutlined,
     PlusOutlined,
@@ -20,15 +21,15 @@ import {
     HomeOutlined,
     GlobalOutlined,
     UnorderedListOutlined,
-    SelectOutlined,
+    BorderlessTableOutlined,
 } from "@ant-design/icons";
 import employeesData from "../../data/Employees";
 import Header from "../pages/Header";
 import { MdAccountCircle } from "react-icons/md";
 
 const { Title } = Typography;
-const renderBoldText = (text) => (
-    <Typography.Text strong>{text}</Typography.Text>
+const renderText = (text) => (
+    <Typography.Text style={{}}>{text}</Typography.Text>
 );
 const getRandomColor = () => {
     const letters = "0123456789ABCDEF";
@@ -65,7 +66,7 @@ const columns = [
         dataIndex: "id",
         key: "id",
         width: 100,
-        render: renderBoldText,
+        render: renderText,
     },
     {
         title: (
@@ -76,11 +77,10 @@ const columns = [
         ),
         dataIndex: "name",
         key: "name",
-        width: 200,
         render: (text, record) => (
             <>
                 <Avatar src={record.avatar} style={{ marginRight: "10px" }} />
-                {renderBoldText(text)}
+                {renderText(text)}
             </>
         ),
     },
@@ -94,12 +94,11 @@ const columns = [
         ),
         dataIndex: "department",
         key: "department",
-        width: 200,
-        render: (text) => (
+        render: (record) => (
             <Space>
-                <Badge color={getRandomColor()} />
-                <Typography.Text underline strong>
-                    {text}
+                <Badge color={record.color} />
+                <Typography.Text underline>
+                    {record.name}
                 </Typography.Text>
             </Space>
         ),
@@ -115,7 +114,7 @@ const columns = [
         dataIndex: "phone",
         key: "phone",
         width: 150,
-        render: renderBoldText,
+        render: renderText,
     },
 
     {
@@ -129,7 +128,7 @@ const columns = [
         key: "gender",
         width: 150,
         render: (text) => (
-            <Tag color={text === "Nam" ? "#1890ff" : "#eb2f96"}>{text}</Tag>
+            <Tag color={text === "Nam" ? "processing" : "error"} style={{ fontWeight: '500' }}>{text}</Tag>
         ),
     },
 
@@ -142,8 +141,7 @@ const columns = [
         ),
         dataIndex: "email",
         key: "email",
-        width: 200,
-        render: renderBoldText,
+        render: renderText,
     },
     {
         title: (
@@ -155,7 +153,7 @@ const columns = [
         dataIndex: "bank",
         key: "bank",
         width: 150,
-        render: renderBoldText,
+        render: renderText,
     },
     {
         title: (
@@ -167,7 +165,7 @@ const columns = [
         dataIndex: "birthdate",
         key: "birthdate",
         width: 150,
-        render: renderBoldText,
+        render: renderText,
     },
     {
         title: (
@@ -178,8 +176,7 @@ const columns = [
         ),
         dataIndex: "address",
         key: "address",
-        width: 200,
-        render: renderBoldText,
+        render: renderText,
     },
     {
         title: (
@@ -191,21 +188,14 @@ const columns = [
         dataIndex: "country",
         key: "country",
         width: 150,
-        render: renderBoldText,
+        render: renderText,
     },
     {
-        title: (
-            <Space>
-                <Title level={4} style={{ color: "#000", marginTop: 0 }}>
-                    #
-                </Title>
-                Tài khoản ngân hàng
-            </Space>
-        ),
+        title: <div ><BorderlessTableOutlined /> Tài Khoản Ngân Hàng</div>,
         dataIndex: "account",
         key: "account",
         width: 200,
-        render: renderBoldText,
+        render: renderText,
     },
 ];
 
@@ -219,25 +209,41 @@ const Employees = () => {
         if (searchText && !employee.name.toLocaleLowerCase().includes(searchText)) {
             return false;
         }
-        if (filterDepartment && employee.department !== filterDepartment) {
+        if (filterDepartment && employee.department.name !== filterDepartment) {
             return false;
         }
         return true;
     });
 
+    const departmentOptions = [
+        { value: '', label: 'Toàn Bộ Phòng Ban' },
+        { value: 'Sales', label: 'Sales' },
+        { value: 'Marketing', label: 'Marketing' },
+        { value: 'Finance', label: 'Finance' },
+        { value: 'Human Resource', label: 'Human Resource' },
+        { value: 'Operations', label: 'Operations' },
+        { value: 'Engineering', label: 'Engineering' },
+        { value: 'Customer Support', label: 'Customer Support' },
+        { value: 'Research & Development', label: 'Research & Development' },
+        { value: 'Quality Assurance', label: 'Quality Assurance' },
+        { value: 'Design', label: 'Design' },
+        { value: 'Chăm sóc khách hàng', label: 'Chăm sóc khách hàng' },
+    ]
     return (
         <>
             <Header content={'Danh Sách Nhân Viên'} />
-            <div className="table" style={{ margin: '0 5% 0 5%', maxWidth: '80vw', overflowX: 'auto', overflowY: 'hidden' }}>
+            <div className="table" style={{ margin: '15px 5% 0 5%', maxWidth: '80vw', overflowX: 'auto', overflowY: 'hidden' }}>
                 <div style={{ height: '80px', borderBottom: '1px solid', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '5px' }}>
                     {/* search */}
-                    <Input placeholder="Tìm kiếm" bordered={false} style={{ borderBottom: '1px solid', width: '300px' }} />
+                    <Input placeholder="Tìm kiếm" bordered={false} value={searchText} style={{ borderBottom: '1px solid', width: '300px' }} onChange={(e) => setSearchText(e.target.value)} />
                     <div>
                         <Select
-                            defaultValue="Toàn Bộ Phòng Ban"
-                            options={[{ value: 'Toàn Bộ Phòng Ban', label: 'Toàn Bộ Phòng Ban' }]}
+                            defaultValue={filterDepartment}
+                            value={filterDepartment}
+                            options={departmentOptions}
+                            onSelect={(e) => setFilterDepartment(e)}
                         />
-                        <Button type="primary" ghost>
+                        <Button type="primary" ghost style={{ marginLeft: '5px', color: "#73d13d", borderColor: "#73d13d" }} onClick={() => setFilterDepartment('')}>
                             Làm mới
                         </Button>
                     </div>
@@ -258,9 +264,8 @@ const Employees = () => {
                     pagination={{
                         showTotal: (total, range) =>
                             `${range[0]}-${range[1]} of ${total}`,
-                        pageSize: 7,
+                        pageSize: 10,
                     }}
-                    className="my-table offset-pagination"
                 />
             </div>
         </>

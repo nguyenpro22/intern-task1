@@ -14,36 +14,37 @@ function getItem(label, key, icon, children, type) {
         type,
     };
 }
+const { Title } = Typography;
 
 const items = [
-    getItem('Dashboard', 'dashboard', <HomeOutlined />),
-    getItem('NHÂN VIÊN', 'sub2', null, [
+    getItem('Dashboard', '', <HomeOutlined />),
+    getItem(<Title level={5}>NHÂN VIÊN</Title>, 'sub2', null, [
         getItem('Phòng Ban', 'deps', <TeamOutlined />),
         getItem('Phòng Ban của tôi', 'mydep', <TeamOutlined />),
         getItem('Toàn Bộ Nhân Viên', 'emps', <TeamOutlined />),
         getItem('Tạo Nhân Viên Mới', 'newemp', <UsergroupAddOutlined />),
     ]),
-    getItem('TĂNG CA', 'sub3', null, [
+    getItem(<Title level={5}>TĂNG CA</Title>, 'sub3', null, [
         getItem('Đơn Tăng Ca Nhân Viên', 'empOT', <ClockCircleOutlined />),
         getItem('Đơn Tăng Ca Của Tôi', 'myOT', <ClockCircleOutlined />),
     ]),
-    getItem('NGHỈ PHÉP', 'sub4', null, [
+    getItem(<Title level={5}>NGHỈ PHÉP</Title>, 'sub4', null, [
         getItem('Đơn Nghỉ Phép Nhân Viên', 'empleave', <MedicineBoxOutlined />),
         getItem('Đơn Nghỉ Phép Của Tôi', 'myleave', <MedicineBoxOutlined />)
     ]),
-    getItem('ĐƠN KHÁC', 'sub5', null, [
+    getItem(<Title level={5}>ĐƠN KHÁC</Title>, 'sub5', null, [
         getItem('Danh Sách Đơn Khác', 'allother', <MailOutlined />),
         getItem('Đơn Khác Của Tôi', 'myother', <MailOutlined />),
     ]),
-    getItem('QUẢN LÝ LƯƠNG', 'sub6', null, [
+    getItem(<Title level={5}>QUẢN LÝ LƯƠNG</Title>, 'sub6', null, [
         getItem('Lương Nhân Viên', 'empsalary', <TeamOutlined />),
         getItem('Lương Của Tôi', 'mysalary', <TeamOutlined />),
     ]),
-    getItem('HỢP ĐỒNG', 'sub7', null, [
+    getItem(<Title level={5}>HỢP ĐỒNG</Title>, 'sub7', null, [
         getItem('Hợp Đồng Nhân Viên', 'empcontract', <MailOutlined />),
         getItem('Hợp Đồng Của Tôi', 'mycontract', <MailOutlined />),
     ]),
-    getItem('TUYỂN DỤNG', 'sub8', null, [
+    getItem(<Title level={5}>TUYỂN DỤNG</Title>, 'sub8', null, [
         getItem('Danh sách ứng viên', 'career', <TeamOutlined />),
     ]),
 ];
@@ -51,14 +52,13 @@ const items = [
 const Dashboard = () => {
     const location = useLocation();
     const path = location.pathname.replace('/', '');
-
     const navigate = useNavigate();
     return (
         <div style={{ display: 'flex' }}>
             <div>
                 <div style={{ padding: '10px 0  0 10px', textAlign: 'center', display: 'flex' }}>
                     <Avatar size={50} icon={<UserOutlined />} />
-                    <Typography style={{ margin: '20px', marginTop: '12px', color: 'grey' }}>Your Name</Typography>
+                    <Title level={5} style={{ margin: '20px', marginTop: '12px', }}>Your Name</Title>
                 </div>
                 <div style={{
                     width: '260px',
