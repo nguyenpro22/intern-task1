@@ -4,7 +4,6 @@ import { Table, Button, Typography, Space, Badge, Avatar } from "antd";
 import {
     EllipsisOutlined,
     ArrowUpOutlined,
-    ContactsOutlined,
     PhoneOutlined,
     MoreOutlined,
     ContainerOutlined,
@@ -15,16 +14,6 @@ import { MdOutlineAccountCircle } from 'react-icons/md'
 import departmentsData from "../../data/Departments";
 import employeesData from "../../data/Employees";
 
-const { Title } = Typography;
-
-const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-};
 
 const columns = [
     {

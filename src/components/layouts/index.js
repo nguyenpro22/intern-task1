@@ -55,7 +55,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
     return (
         <div style={{ display: 'flex' }}>
-            <div>
+            <div >
                 <div style={{ padding: '10px 0  0 10px', textAlign: 'center', display: 'flex' }}>
                     <Avatar size={50} icon={<UserOutlined />} />
                     <Title level={5} style={{ margin: '20px', marginTop: '12px', }}>Your Name</Title>

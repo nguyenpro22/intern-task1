@@ -27,18 +27,9 @@ import employeesData from "../../data/Employees";
 import Header from "../pages/Header";
 import { MdAccountCircle } from "react-icons/md";
 
-const { Title } = Typography;
 const renderText = (text) => (
-    <Typography.Text style={{}}>{text}</Typography.Text>
+    <Typography.Text style={{ color: 'grey' }}>{text}</Typography.Text>
 );
-const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-};
 
 const columns = [
     {
@@ -97,7 +88,7 @@ const columns = [
         render: (record) => (
             <Space>
                 <Badge color={record.color} />
-                <Typography.Text underline>
+                <Typography.Text underline style={{ color: 'grey' }}>
                     {record.name}
                 </Typography.Text>
             </Space>

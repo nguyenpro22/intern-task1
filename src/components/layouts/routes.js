@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Departments from "./employees/Departments";
 import Employees from "./employees/Employees";
+import MyContract from "./contract/MyContract";
+import AddNewEmp from "./employees/AddNewEmp";
 
 const ContentRoutes = () => {
     return (
@@ -9,7 +11,7 @@ const ContentRoutes = () => {
             <Route path="/deps" element={<Departments />} />
             <Route path="/mydep" element={<div>This is mydep page</div>} />
             <Route path="/emps" element={<Employees />} />
-            <Route path="/newemp" element={<div>This is newemp page</div>} />
+            <Route path="/newemp" element={<AddNewEmp />} />
             <Route path="/empOT" element={<div>This is empOT page</div>} />
             <Route path="/myOT" element={<div>This is myOT page</div>} />
             <Route path="/empleave" element={<div>This is empleave page</div>} />
@@ -19,7 +21,7 @@ const ContentRoutes = () => {
             <Route path="/empsalary" element={<div>This is empsalary page</div>} />
             <Route path="/mysalary" element={<div>This is mysalary page</div>} />
             <Route path="/empcontract" element={<div>This is empcontract page</div>} />
-            <Route path="/mycontract" element={<div>This is mycontract page</div>} />
+            <Route path="/mycontract" element={<MyContract />} />
             <Route path="/career" element={<div>This is career page</div>} />
         </Routes>
     );
